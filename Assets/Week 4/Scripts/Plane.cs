@@ -5,6 +5,7 @@ using UnityEngine;
 public class Plane : MonoBehaviour
 {
     public List<Vector2> points;
+    public List<Sprite> planes;
     Vector2 lastPosition;
     public float pointThreshold = 0.2f;
     LineRenderer lineRenderer;
@@ -13,13 +14,20 @@ public class Plane : MonoBehaviour
     public float speed = 1.0f;
     public AnimationCurve landing;
     float landingTimer;
+    SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, transform.position);
+
+        rigidbody.position = new Vector3(Random.Range(-5, 5), Random.Range(-5,5), 0);
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+        speed = Random.Range(1, 3);
+        spriteRenderer.sprite = planes[Random.Range(0, 4)];
     }
 
     private void FixedUpdate()
