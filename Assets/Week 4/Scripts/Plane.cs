@@ -15,6 +15,7 @@ public class Plane : MonoBehaviour
     public AnimationCurve landing;
     float landingTimer;
     SpriteRenderer spriteRenderer;
+    private bool timeToDie = false;
 
     private void Start()
     {
@@ -45,15 +46,17 @@ public class Plane : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(timeToDie)
         {
             landingTimer += 0.5f * Time.deltaTime;
             float interpolation = landing.Evaluate(landingTimer);
             if (transform.localScale.z < 0.1f)
             {
                 Destroy(gameObject);
+                timeToDie = false;
             }
             transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, interpolation);
+           
         }
 
         lineRenderer.SetPosition(0, transform.position);
@@ -92,4 +95,19 @@ public class Plane : MonoBehaviour
         }
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        spriteRenderer.color = Color.red;
+
+        if (Vector3.Distance(collision.transform.position, transform.position) < 0.25)
+        {
+            timeToDie = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        spriteRenderer.color = Color.white;
+    }
 }
