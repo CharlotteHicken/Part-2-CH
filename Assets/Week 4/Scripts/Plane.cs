@@ -95,18 +95,20 @@ public class Plane : MonoBehaviour
         }
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         spriteRenderer.color = Color.red;
 
-        if (Vector3.Distance(collision.transform.position, transform.position) < 0.25)
+        Debug.Log(Vector3.Distance(transform.position, collision.transform.position));
+
+        if (Vector3.Distance(transform.position, collision.transform.position) < 3)
         {
+            Debug.Log("PLANES CRASHED OMGGGG AAAAAHGHHHHHHHHHHH");
             timeToDie = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         spriteRenderer.color = Color.white;
     }
