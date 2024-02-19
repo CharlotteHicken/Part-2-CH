@@ -19,12 +19,12 @@ public class PlayerControls : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movement = destination - (Vector2)transform.position;
-        if(movement.magnitude < 0.1)
+        movement = destination - (Vector2)transform.position; //moves the player's destination, by subtracting the current position to get towards the goal
+        if(movement.magnitude < 0.1) //if position is almost at the goal, set movement. (this prevents jittering)
         {
             movement = Vector2.zero;
         }
-        rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
+        rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime); //move the player in the right direction and by this speed and 
     }
 
     // Update is called once per frame
@@ -36,6 +36,15 @@ public class PlayerControls : MonoBehaviour
             destination = new Vector2(mousePosition.x, transform.position.y);
         }
 
-        animator.SetFloat("Speed", movement.magnitude);
+        animator.SetFloat("Speed", movement.magnitude); //animate based on the speed and movement.magnitude
+
+        if (movement.magnitude > 2.1)
+        {
+            speed = 6;
+        }
+        else
+        {
+            speed = 4;
+        }
     }
 }
