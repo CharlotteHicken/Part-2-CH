@@ -32,7 +32,8 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            destination = new Vector2(mousePosition.x, transform.position.y);
         }
 
         animator.SetFloat("Speed", movement.magnitude);
