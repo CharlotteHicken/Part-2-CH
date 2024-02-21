@@ -2187,6 +2187,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2007905841}
+        m_TargetAssemblyTypeName: CatMeterBar, Assembly-CSharp
+        m_MethodName: CatMeter
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1015003046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2310,6 +2322,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2007905839}
         m_TargetAssemblyTypeName: PlayerControls, Assembly-CSharp
+        m_MethodName: CatMeter
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2007905841}
+        m_TargetAssemblyTypeName: CatMeterBar, Assembly-CSharp
         m_MethodName: CatMeter
         m_Mode: 4
         m_Arguments:
@@ -2713,7 +2737,7 @@ Transform:
   m_GameObject: {fileID: 1457783895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04864967, y: 3.17921, z: -10}
+  m_LocalPosition: {x: -0.04861908, y: 3.17921, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2913,6 +2937,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2007905839}
         m_TargetAssemblyTypeName: PlayerControls, Assembly-CSharp
+        m_MethodName: CatMeter
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 3
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2007905841}
+        m_TargetAssemblyTypeName: CatMeterBar, Assembly-CSharp
         m_MethodName: CatMeter
         m_Mode: 4
         m_Arguments:
@@ -3412,8 +3448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   catMeter: 0
-  catMax: 5
-  meterDown: 5
+  catMax: 10
+  meterDown: 2
 --- !u!95 &2007905840
 Animator:
   serializedVersion: 5
