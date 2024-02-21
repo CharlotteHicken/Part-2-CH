@@ -9,7 +9,7 @@ public class CatMeterBar : MonoBehaviour
 
     public void CatMeter(float meter)
     {
-        slider.value += meter;
+        slider.value += meter; //change the slider based on the meters value
     }
     // Start is called before the first frame update
     void Start()

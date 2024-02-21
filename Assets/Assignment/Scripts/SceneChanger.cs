@@ -7,7 +7,7 @@ public class SceneChanger : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1); //when this function is called, switch to scene 1!
     }
 
     // Start is called before the first frame update

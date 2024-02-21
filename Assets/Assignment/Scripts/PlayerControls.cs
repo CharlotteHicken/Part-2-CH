@@ -49,9 +49,9 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !clickingOnSelf && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetMouseButtonDown(0) && !clickingOnSelf && !EventSystem.current.IsPointerOverGameObject())//if the mouse is clicked, and the player is notclicking on the cat or UI
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //when mouse is clicked, set mosuposition to that new position
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //set mouseposition to that new position
             destination = new Vector2(mousePosition.x, transform.position.y); //set destination to the x of that mouse click, but keep the current y.
         }
 
@@ -66,9 +66,9 @@ public class PlayerControls : MonoBehaviour
             speed = 4;
         }
 
-        timer += Time.deltaTime;
+        timer += Time.deltaTime; //timer slowly increases each second
 
-        if (timer > meterDown)
+        if (timer > meterDown) //when enough seconds have passed, decrease the catmeter slider, and reset the timer
         {
             SendMessage("CatMeter", -1);
             timer = 0;
@@ -78,37 +78,37 @@ public class PlayerControls : MonoBehaviour
 
     private void OnMouseDown()
     {
-        clickingOnSelf = true;
+        clickingOnSelf = true; //when the player clicks on the cat, it will increase the catmeter, and play the meow animation
         SendMessage("CatMeter", 1);
         animator.SetTrigger("Meow");
     }
 
     private void OnMouseUp()
     {
-        clickingOnSelf = false;
+        clickingOnSelf = false; //when player unclicks, the cat can move again!
     }
 
     public void CatMeter(float meter)
     {
-        catMeter += meter;
-        catMeter = Mathf.Clamp(catMeter, 0, catMax);
-        if (catMeter == 0)
+        catMeter += meter; //change the catmeter based on the inputed value
+        catMeter = Mathf.Clamp(catMeter, 0, catMax); //clamp the value so it is not too small or too big.
+        if (catMeter == 0) //if the cat meter reaches 0, play the sleep animation stuff (so the cat doesn't die because that is sad)
         {
-            animator.SetTrigger("Sleep");
+            animator.SetTrigger("Sleep"); 
             SendMessage("CatMeter", 5);
         }
 
-        if (meter == 2)
+        if (meter == 2) //if the input is 2, play the cat stretch
         {
             animator.SetTrigger("Stretch");
         }
 
-        if (meter == 3)
+        if (meter == 3) //if the input is 3, play the lick animation
         {
             animator.SetTrigger("Lick");
         }
 
-        if (meter == 5)
+        if (meter == 5) //if input is 5 play the sleep animation
         {
             animator.SetTrigger("Sleep");
         }
