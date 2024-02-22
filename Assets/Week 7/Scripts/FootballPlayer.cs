@@ -17,13 +17,13 @@ public class FootballPlayer : MonoBehaviour
 
     public void OnMouseDown()
     {
-        Selected(true);
+        Controller.SetSelectedPlayer(this);
     }
 
-    public void OnMouseUp()
-    {
-        Selected(false); 
-    }
+    //public void OnMouseUp()
+    //{
+    //    Selected(false); 
+    //}
 
     public void Selected(bool isSeleceted)
     {
